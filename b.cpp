@@ -27,8 +27,15 @@ string checkmsg(string &crypt_msg, string &msg ) {
   }
 }
 
-int main() { 
-  FILE* fp = fopen("entradaB.txt", "r");
+int main(int argc, char** argv) { 
+  string inFile = "";
+  if( argc == 2 ) {
+    inFile = argv[1];
+  }else{
+      cout << "uso: ./b  nombre_de_archivo_de_texto" << endl;
+      return 1;
+  }
+  FILE* fp = fopen(inFile.c_str(),"r");
   if (fp == NULL)
 	exit(EXIT_FAILURE);
 
@@ -51,6 +58,7 @@ int main() {
   for (int z = 0; z < v.size()-1; z++){
     cout<< checkmsg(aux, v[z]) << " MSG: "<< v[z] <<endl;
   }
+  return 0;
 
 
 }
