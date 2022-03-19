@@ -19,6 +19,12 @@ string removeDuplicates(string &s){
    str.push_back(s[n-1]);
    return str;   
 }
+string trimfnc(string str) {
+  const char* whitespaces = " \t\n\r\f\v";
+  str.erase(str.find_last_not_of(whitespaces) + 1);
+  str.erase(0,str.find_first_not_of(whitespaces));
+  return str;
+}
 string checkmsg(string &crypt_msg, string &msg ) {
   if (crypt_msg.find(msg) != string::npos) {
 	return	"Si" ;
@@ -51,7 +57,8 @@ int main(int argc, char** argv) {
   }
 
   for (int b = 0; b < v.size();b++){ 
-	v[b].erase(prev(v[b].end()));
+    v[b] = trimfnc(v[b]);
+
   }
   string aux = removeDuplicates(v.back()); 
 	
