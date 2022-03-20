@@ -12,7 +12,6 @@ void solve(int n1, int n2) {
     p1 += aux;
     m1[i]=aux; 
     ++i; 
-
   }
   if(aux < 0){
     p2 += abs(aux); 
@@ -22,12 +21,21 @@ void solve(int n1, int n2) {
 }
 void printresult( int p1, int p2 ){ 
   int n = 0 ;
+  int ventaja = p1 - p2 ;
   if (p1 > p2){
     n = sizeof(m1) / sizeof(m1[0]);
-    cout << 1 << ": "<< *max_element(m1, m1 + n) << endl;
+    cout <<"Ganador: " <<  1 << " ventaja: " 
+      << abs(ventaja) 
+      <<  " pts de mejor ronda: "
+      << *max_element(m1, m1 + n) 
+      << endl;
   }else if (p1 < p2){ 
     n = sizeof(m2) / sizeof(m2[0]);
-    cout << 2 <<" "<< *max_element(m2, m2+n) << endl;
+    cout << "Ganador: "<< 2 << " ventaja: " 
+      << abs(ventaja) 
+      <<  " pts de mejor ronda: "
+      << *max_element(m2, m2+n) 
+      << endl;
   }
 
 }
