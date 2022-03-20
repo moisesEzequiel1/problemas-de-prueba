@@ -4,30 +4,30 @@
 #include <sstream>
 using namespace std; 
 
-int aux, p1, p2, m[100], n, lider = 0;
-int i = 0;
+int aux, p1, p2, m1[100], m2[100];
+int i,j = 0;
 void solve(int n1, int n2) { 
   aux = n1 - n2;
   if ( aux > 0){ 
     p1 += aux;
-    m[i] = aux; 
+    m1[i]=aux; 
     ++i; 
 
   }
   if(aux < 0){
     p2 += abs(aux); 
-    m[i] = abs(aux); 
-    ++i; 
+    m2[j] = abs(aux); 
+    ++j; 
   }
-  n = sizeof(m) / sizeof(m[0]);
 }
 void printresult( int p1, int p2 ){ 
-  int winner; 
-  winner = p1 - p2; 
-  if (winner > 0){
-    cout << 2 << " "<< *max_element(m, m + n) << endl;
-  }else { 
-    cout << 1 <<" "<< *max_element(m, m+n) << endl;
+  int n = 0 ;
+  if (p1 > p2){
+    n = sizeof(m1) / sizeof(m1[0]);
+    cout << 1 << ": "<< *max_element(m1, m1 + n) << endl;
+  }else if (p1 < p2){ 
+    n = sizeof(m2) / sizeof(m2[0]);
+    cout << 2 <<" "<< *max_element(m2, m2+n) << endl;
   }
 
 }
@@ -46,7 +46,6 @@ void evalFile(string filename){
      stringstream lineStream(line); 
      lineStream >> v1;
      lineStream >> v2;
-       cout<< v1 << " " << v2 << endl;
        solve(v1, v2);
 	}
     index++; 
