@@ -1,7 +1,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <bits/stdc++.h>
 #include <iostream>
 using namespace std; 
 
@@ -45,29 +44,27 @@ int main(int argc, char** argv) {
   if (fp == NULL)
 	exit(EXIT_FAILURE);
 
-  vector<string> v;
+  vector<string> allmsg;
   char* line = NULL;
   size_t len = 0;
   int i = 0; 
   while ((getline(&line, &len, fp)) != -1) {
 	if (i>0){
-	  v.push_back(line);
+	  allmsg.push_back(line);
 	}
 	i++;
   }
 
-  for (int b = 0; b < v.size();b++){ 
-    v[b] = trimfnc(v[b]);
+  for (int b = 0; b < allmsg.size();b++){ 
+    allmsg[b] = trimfnc(allmsg[b]);
 
   }
-  string aux = removeDuplicates(v.back()); 
+  string aux = removeDuplicates(allmsg.back()); 
 	
-  for (int z = 0; z < v.size()-1; z++){
-    cout<< checkmsg(aux, v[z]) << " MSG: "<< v[z] <<endl;
+  for (int z = 0; z < allmsg.size()-1; z++){
+    cout<< checkmsg(aux, allmsg[z]) <<endl;
   }
   return 0;
-
-
 }
 
 
